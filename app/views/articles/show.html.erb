@@ -1,0 +1,24 @@
+<!--Article page by id param-->
+
+<h1><%= @article.title %></h1>
+
+<p><%= @article.body %></p>
+<p>This article has XXX reviews counted!</p>
+
+<!--Modifier un article-->
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+   <li>
+        <%= link_to "Destroy", article_path(@article), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+        } %></li>
+</ul>
+
+<!-- Afficher tous les commentaires-->
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<!--Ajouter un commentaire-->
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>

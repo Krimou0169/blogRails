@@ -1,0 +1,33 @@
+<!--template form for new comment-->
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <div>
+    <!--Review part-->
+    <%= form.label :review %><br>
+    <%= form.number_field :review, in: 1.0..5.0, step: 1, placeholder: "Rating"%>
+    <div>
+      <i class="star" data-rating = "1">&#9733</i>
+      <i class="star" data-rating = "2">&#9733</i>
+      <i class="star" data-rating = "3">&#9733</i>
+      <i class="star" data-rating = "4">&#9733</i>
+      <i class="star" data-rating = "5">&#9733</i>  
+      <i class="rating">Rating: </i>
+    </div>
+  </div>
+  <p>
+    <%= form.label :status %><br>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+  </p>  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+

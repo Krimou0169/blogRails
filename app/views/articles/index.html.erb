@@ -1,0 +1,37 @@
+<!--Home page with all the articles linked-->
+<h1 class="d-flex justify-content-center">Articles</h1>
+
+<p class="text-center">Our blog has <%= Article.public_count %> public articles  and counting!</p>
+
+<div class="d-flex justify-content-center">
+    <table>
+        <thead>
+            <tr>
+                <th>Article name</th>
+                <th>Rating</th>
+            </tr>    
+        </thead>
+        <tbody>
+            <% @articles.each do |article| %>
+                <% unless article.archived? %>
+                    <tr>
+                        <td class="text-center">
+                            <%= link_to article.title, article %> <!--  link_to helper renders a link with its first argument as the link's text and its second argument as the link's destination.-->
+                        </td>
+                        <!--Rating average-->
+                        <td class ="text-center">
+                            <%= article.review %>
+                        </td>
+                    </tr>
+                <% end %>
+            <% end %>s  
+        </tbody> 
+    </table>
+</div>
+
+<!--Add a new article-->
+<div>
+    <%= link_to "New Article", new_article_path %>
+</div>
+
+
